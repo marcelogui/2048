@@ -21,6 +21,7 @@ export default class GameBoard {
     }
     this.resetBoard();
     this.createRandomCell();
+    this.createRandomCell();
     this.renderBoard();
   }
 

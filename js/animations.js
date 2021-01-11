@@ -4,15 +4,12 @@ export const createCellAnim = [
   ];
 
   export const createCellOptions = {
-    duration: 150,
+    duration: 100,
     easing: "ease-out",
     fill: "forwards",
   };
 
   const translateAnimKeyframes = function (x1, y1, x2, y2) {
-    // As the moving cell has different start and end positions
-    // it was easier to create a function to calculate the translation
-    // needed than to do that on the renderAnimationFunction
     return [
       { transform: `translate(${0}px, ${0}px)`,
         opacity: 1
@@ -22,7 +19,7 @@ export const createCellAnim = [
   };
 
   const translateAnimOptions = {
-    duration: 150,
+    duration: 100,
     iterations: 1,
   };
 
@@ -38,10 +35,6 @@ export const createCellAnim = [
   };
 
   export function renderCellAnimation(cell, [x1, y1], [x2, y2]) {
-
-    // The moving cell is a copy of the actual cell. Is just used for animation
-    // purposes as the renderBoard is the responsible for drawing the final state
-    // of the board after the player move
     const cellCopy = cell.cloneNode(true);
     cellCopy.style.position = "absolute";
     cell.dataset.cellValue = 0;
