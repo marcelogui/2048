@@ -6,7 +6,7 @@
 
 The game is played in a 4x4 grid, where each cell of this grid is a tile containing a power of two number. The player can move the tiles in one of the four directions - UP, DOWN, LEFT and RIGHT - using the keyboard arrow keys.
 
-The tiles will move as furthest as they can, being stopped by another tile or the board edge. If one tile bumps to another with the same number, they will combine into one, where their sum will be the new tile number. The tile can merge only once each turn.
+The tiles will move as far as they can, being stopped by another tile or the board edge. If one tile bumps to another with the same number, they will combine into one, where their sum will be the new tile number. The tile can merge only once each turn.
 
 Everytime that a legal move is played, (i.e., at least one tile moves), a new tile is created. This new tile has a 90% chance of being numbered with two(2) and 10% chance of being numbered with four(4).
 
