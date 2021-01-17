@@ -5,6 +5,7 @@ const gameBoard = new GameBoard();
 
 
 document.addEventListener("keydown", async (event) => {
+  const boardBefore = gameBoard.getCurrentState();
   if (event.code === "ArrowRight") {
     gameBoard.slideBoard();
     gameBoard.mergeBoard();
@@ -36,11 +37,11 @@ document.addEventListener("keydown", async (event) => {
   await Promise.all(animateSliding(gameBoard));
   await Promise.all(animateMerging(gameBoard));
 
-  gameBoard.createRandomCell();
+  const boardAfter = gameBoard.getCurrentState();
+  console.log(boardAfter === boardBefore)
+  boardAfter !== boardBefore && gameBoard.createRandomCell();
   gameBoard.renderBoard();
   gameBoard.resetBoardNumbersIndex();
-
-  console.log(checkCanMove(gameBoard.boardCellsData))
 
 });
 

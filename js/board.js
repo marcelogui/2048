@@ -216,4 +216,9 @@ export default class GameBoard {
       this.boardCellsHTML[index].innerText = "";
     });
   }
+
+  getCurrentState(){
+    const listCellsNumbers = this.boardCellsData.map(cell => cell.number);
+    return listCellsNumbers.toString();
+  }
 }
