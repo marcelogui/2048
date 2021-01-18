@@ -1,3 +1,5 @@
+import {createCellAnim,
+createCellOptions } from './animations.js';
 export default class GameBoard {
   constructor() {
     this.boardCellsHTML = Array.from(
@@ -7,6 +9,15 @@ export default class GameBoard {
       const { x, y } = cell.getBoundingClientRect();
       return [x, y];
     });
+
+    this.scoreHTML = document.getElementById('current-score');
+    this.bestScoreHTML = document.getElementById('best-score');
+
+    this.score = 0;
+    this.bestScore = 0;
+
+
+
 
     this.boardCellsData = [];
     for (let i = 0; i < this.boardCellsHTML.length; i++) {
@@ -93,11 +104,16 @@ export default class GameBoard {
      */
     let rowFlipped = row.slice().reverse();
     let newRow = [];
+    let points = 0;
 
     while (newRow.length < 4) {
       const cellNumber = rowFlipped.shift();
       if (this.isCellMergeable(newRow, cellNumber)) {
-        newRow[0].number = newRow[0].number * 2;
+        const newMergedNumber = newRow[0].number * 2
+
+        points += newMergedNumber;
+        newRow[0].number = newMergedNumber;
+
         cellNumber.number = 0;
         cellNumber.isMerged = true;
         cellNumber.mergedTo = newRow[0].id;
@@ -106,7 +122,11 @@ export default class GameBoard {
         newRow.unshift(cellNumber);
       }
     }
-    return newRow;
+    const mergedInfo = {
+      newRow,
+      points,
+    }
+    return mergedInfo;
   }
 
   isCellMergeable(newRow, cellNumber) {
@@ -139,24 +159,28 @@ export default class GameBoard {
      * Apply mergeRow for each row in the board
      */
     let newBoardCellsData = [];
+    let roundPoints = 0;
+
     for (let rowStart = 0; rowStart < 4; rowStart++) {
       let boardRowStart = this.boardCellsData.slice(
         rowStart * 4,
         rowStart * 4 + 4
       );
-      let boardRow = this.mergeRow(boardRowStart);
-      newBoardCellsData.push(...boardRow);
+      let { newRow, points } = this.mergeRow(boardRowStart);
+      newBoardCellsData.push(...newRow);
+      roundPoints += points;
     }
     this.boardCellsData = newBoardCellsData;
+    this.score += roundPoints;
   }
 
   createRandomCell() {
     /**
      * Create a new cell in the board.
      * This function filters all positions in the board that have zero as their
-     * number. It then gets one of this cells randomly.
+     * number, then get one of this cells randomly.
      * The number created in the cell has 90% of chance of being two(2)
-     * amd 10% of being four(4)
+     * and 10% of being four(4)
      **/
     const zeroCellsIndex = [];
     this.boardCellsData.map((cell, index) => {
@@ -174,6 +198,7 @@ export default class GameBoard {
     Math.random() < 0.9 ? cellNumber = 2 : cellNumber = 4;
     this.boardCellsData[indexNewCell].number = cellNumber;
     this.boardCellsHTML[indexNewCell].dataset.cellValue = cellNumber;
+    this.boardCellsHTML[indexNewCell].animate(createCellAnim, createCellOptions);
   }
 
   renderBoard() {
@@ -188,6 +213,7 @@ export default class GameBoard {
         this.boardCellsHTML[index].innerText = "";
       }
     });
+    this.scoreHTML.innerText = this.score;
     this.resetBoardNumbersIndex();
   }
 

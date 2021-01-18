@@ -6,26 +6,53 @@
     <title>2048</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;700&family=Open+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="board">
-        <div class="board-cell" data-cell-value="" data-cell-position="0"></div>
-        <div class="board-cell" data-cell-value="" data-cell-position="1"></div>
-        <div class="board-cell" data-cell-value="" data-cell-position="2"></div>
-        <div class="board-cell" data-cell-value="" data-cell-position="3"></div>
-        <div class="board-cell" data-cell-value="" data-cell-position="4"></div>
-        <div class="board-cell" data-cell-value="" data-cell-position="5"></div>
-        <div class="board-cell" data-cell-value="" data-cell-position="6"></div>
-        <div class="board-cell" data-cell-value="" data-cell-position="7"></div>
-        <div class="board-cell" data-cell-value="" data-cell-position="8"></div>
-        <div class="board-cell" data-cell-value="" data-cell-position="9"></div>
-        <div class="board-cell" data-cell-value="" data-cell-position="10"></div>
-        <div class="board-cell" data-cell-value="" data-cell-position="11"></div>
-        <div class="board-cell" data-cell-value="" data-cell-position="12"></div>
-        <div class="board-cell" data-cell-value="" data-cell-position="13"></div>
-        <div class="board-cell" data-cell-value="" data-cell-position="14"></div>
-        <div class="board-cell" data-cell-value="" data-cell-position="15"></div>
+    <div class="container">
+
+        <header>
+            <div class="left-panel">
+                <h1>2048</h1>
+                <p>Join the tiles, get to <strong>2048</strong>!</p>
+                <a href="#">How to play ➔</a>
+            </div>
+            <div class="right-panel">
+                <div class="scores">
+                    <div class="scoreboard">
+                        <p>Score</p>
+                        <p id="current-score">0</p>
+                    </div>
+                    <div class="scoreboard">
+                        <p>Best</p>
+                        <p id="best-score">0</p>
+                    </div>
+                </div>
+                <button class="play">
+                    New Game
+                </button>
+            </div>
+        </header>
+        <main class="board">
+            <div class="board-cell" data-cell-value="" data-cell-position="0"></div>
+            <div class="board-cell" data-cell-value="" data-cell-position="1"></div>
+            <div class="board-cell" data-cell-value="" data-cell-position="2"></div>
+            <div class="board-cell" data-cell-value="" data-cell-position="3"></div>
+            <div class="board-cell" data-cell-value="" data-cell-position="4"></div>
+            <div class="board-cell" data-cell-value="" data-cell-position="5"></div>
+            <div class="board-cell" data-cell-value="" data-cell-position="6"></div>
+            <div class="board-cell" data-cell-value="" data-cell-position="7"></div>
+            <div class="board-cell" data-cell-value="" data-cell-position="8"></div>
+            <div class="board-cell" data-cell-value="" data-cell-position="9"></div>
+            <div class="board-cell" data-cell-value="" data-cell-position="10"></div>
+            <div class="board-cell" data-cell-value="" data-cell-position="11"></div>
+            <div class="board-cell" data-cell-value="" data-cell-position="12"></div>
+            <div class="board-cell" data-cell-value="" data-cell-position="13"></div>
+            <div class="board-cell" data-cell-value="" data-cell-position="14"></div>
+            <div class="board-cell" data-cell-value="" data-cell-position="15"></div>
+
+        </main>
     </div>
     <script type="module" src="./js/script.js"></script>
 </body>

@@ -1,3 +1,93 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #faf8ef;
+    color: #776e65;
+    font-family: "Open Sans", "Helvetica Neue", Arial, sans-serif;
+}
+
+header {
+    display: flex;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    font-family: "Open Sans", "Helvetica Neue", Arial, sans-serif;
+    font-size: 5rem;
+}
+
+.left-panel {
+    width: 50%;
+}
+
+.left-panel a{
+    color: inherit;
+    font-weight: 700;
+}
+
+.right-panel {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.scores {
+    display: flex;
+    justify-content: flex-end
+}
+
+.scoreboard {
+    background: #bbada0;
+    color: #eee4da;
+    padding: 3px 15px 0px;
+    border-radius: 3px;
+    margin-top: 8px;
+    min-width: 35px;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.scoreboard + .scoreboard {
+    margin-left: 5px;
+}
+
+.scoreboard p + p {
+    font-size: 25px;
+    font-weight: 700;
+    color: white;
+}
+
+.right-panel button {
+    background-color: #8f7a66;
+    font-size: 1rem;
+    color: white;
+    font-family: "Open Sans", "Helvetica Neue", Arial, sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    width: 50%;
+    align-self: flex-end;
+    border: none;
+    border-radius: 3px;
+    padding: 10px 15px;
+    transition: background-color 0.2s;
+}
+
+.right-panel button:hover {
+    background-color: #af9e8e;
+}
 
 .board {
     display: grid;
@@ -5,7 +95,6 @@
     grid-template-rows: repeat(4, 100px);
     gap: 15px;
     margin: auto;
-    margin-top: 100px;
     background-color: #bbada0;
     width: 445px;
     padding: 15px;
@@ -20,7 +109,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: "Open Sans", "Helvetica Neue", Arial, sans-serif;
     font-size: 55px;
     font-weight: 700;
     color:white;
