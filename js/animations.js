@@ -97,6 +97,13 @@ export function animateMerging(board) {
     return animations;
 }
 
-export function animateRoundPoints(points) {
+export function animateRoundPoints(points, scoreHTML) {
+  let pointsElement = document.createElement('div');
+  pointsElement.innerText = `+${points}`;
+  pointsElement.classList.add('new-points')
+  pointsElement.onanimationend = () => {
+    pointsElement.parentNode.removeChild(pointsElement);
+  }
 
+  scoreHTML.parentNode.appendChild(pointsElement);
 }

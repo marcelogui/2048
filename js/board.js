@@ -1,5 +1,8 @@
-import {createCellAnim,
-createCellOptions } from './animations.js';
+import {
+  createCellAnim,
+  createCellOptions,
+  animateRoundPoints,
+} from './animations.js';
 export default class GameBoard {
   constructor() {
     this.boardCellsHTML = Array.from(
@@ -172,6 +175,9 @@ export default class GameBoard {
     }
     this.boardCellsData = newBoardCellsData;
     this.score += roundPoints;
+    if (roundPoints){
+      animateRoundPoints(roundPoints, this.scoreHTML);
+    }
   }
 
   createRandomCell() {
@@ -213,7 +219,7 @@ export default class GameBoard {
         this.boardCellsHTML[index].innerText = "";
       }
     });
-    this.scoreHTML.innerText = this.score;
+    this.scoreHTML.textContent = this.score;
     this.resetBoardNumbersIndex();
   }
 

@@ -1,3 +1,14 @@
+@keyframes slidePointsUp {
+    from {
+        opacity: 1;
+        bottom: 0;
+    }
+    to {
+        opacity: 0;
+        bottom: 100px;
+    }
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -33,6 +44,7 @@ header h1 {
 }
 
 .right-panel {
+    position: relative;
     width: 50%;
     display: flex;
     flex-direction: column;
@@ -45,6 +57,7 @@ header h1 {
 }
 
 .scoreboard {
+    position: relative;
     background: #bbada0;
     color: #eee4da;
     padding: 3px 15px 0px;
@@ -68,6 +81,17 @@ header h1 {
     font-size: 25px;
     font-weight: 700;
     color: white;
+}
+
+.new-points {
+    font-size: 24px;
+    color: #8f7a66;
+    font-family: 'Open Sans';
+    position: absolute;
+    bottom: 0;
+    right: calc(5px + 100%);
+    animation: slidePointsUp 1s forwards;
+    text-align: center;
 }
 
 .right-panel button {
