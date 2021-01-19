@@ -8,6 +8,7 @@ export default class GameBoard {
     this.boardCellsHTML = Array.from(
       document.querySelectorAll(".board-cell")
     );
+    this.boardOverlay = document.querySelector(".overlay-container");
     this.boardCellsCoordinates = this.boardCellsHTML.map((cell) => {
       const { x, y } = cell.getBoundingClientRect();
       return [x, y];
@@ -18,10 +19,6 @@ export default class GameBoard {
 
     this.score = 0;
     this.bestScore = 0;
-
-
-
-
     this.boardCellsData = [];
     for (let i = 0; i < this.boardCellsHTML.length; i++) {
       this.boardCellsData.push({
@@ -34,9 +31,6 @@ export default class GameBoard {
       });
     }
     this.resetBoard();
-    this.createRandomCell();
-    this.createRandomCell();
-    this.renderBoard();
   }
 
   flipBoard() {
@@ -240,6 +234,8 @@ export default class GameBoard {
    /**
     * Reset the board to a starting state so the game can be played again.
     */
+    this.score = 0;
+    this.scoreHTML.innerText = 0;
     this.boardCellsData.map((cell, index) => {
       cell.number = 0;
       cell.numberBefore = 0;
@@ -247,6 +243,9 @@ export default class GameBoard {
       this.boardCellsHTML[index].dataset.cellValue = 0;
       this.boardCellsHTML[index].innerText = "";
     });
+    this.createRandomCell();
+    this.createRandomCell();
+    this.renderBoard();
   }
 
   getCurrentState(){

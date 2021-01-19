@@ -6,6 +6,7 @@ import {
 
 const gameBoard = new GameBoard();
 
+
 document.addEventListener("keydown", async (event) => {
     const boardBefore = gameBoard.getCurrentState();
     if (event.code === "ArrowRight") {
@@ -47,9 +48,16 @@ document.addEventListener("keydown", async (event) => {
       gameBoard.resetBoardNumbersIndex();
     }
     if (!canMove(gameBoard.boardCellsData)) {
-        // game over
+      gameBoard.boardOverlay.classList.remove("game-over-overlay-none")
     }
 });
+
+document.querySelectorAll('.play').forEach((button) => {
+    button.addEventListener('click', () => {
+    gameBoard.resetBoard();
+    gameBoard.boardOverlay.classList.add("game-over-overlay-none");
+})});
+
 
 function canMove(boardCellsData) {
     for (let cell of boardCellsData) {
@@ -57,7 +65,6 @@ function canMove(boardCellsData) {
             return true;
         }
     }
-
     for (let row = 0; row < 4; row++) {
         const slicedRow = boardCellsData.slice(row * 4, row * 4 + 4);
         const slicedTransposedRow = boardCellsData.filter(

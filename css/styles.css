@@ -9,9 +9,19 @@
     }
 }
 
+@keyframes showOverlay {
+    from {
+        transform: scale(0, 0);
+    }
+    to {
+        transform: scale(1, 1);
+    }
+}
+
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body {
@@ -27,6 +37,7 @@ header {
     display: flex;
     width: 100%;
     margin-bottom: 30px;
+    margin-top: 20px;
 }
 
 header h1 {
@@ -94,7 +105,7 @@ header h1 {
     text-align: center;
 }
 
-.right-panel button {
+.play {
     background-color: #8f7a66;
     font-size: 1rem;
     color: white;
@@ -109,18 +120,35 @@ header h1 {
     transition: background-color 0.2s;
 }
 
-.right-panel button:hover {
+/* This is an experimental feature. As of today, 19 Jan 2021,
+   it has only 68% coverage */
+.play:not(.focus-visible) {
+    outline: none;
+}
+
+.play:hover {
     background-color: #af9e8e;
 }
 
+.game-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+
+}
+
 .board {
+    position: relative;
     display: grid;
     grid-template-columns: 100px 100px 100px 100px;
     grid-template-rows: repeat(4, 100px);
     gap: 15px;
     margin: auto;
     background-color: #bbada0;
-    width: 445px;
+    width: 100%;
     padding: 15px;
     border-radius: 6px;
 }
@@ -136,6 +164,48 @@ header h1 {
     font-size: 55px;
     font-weight: 700;
     color:white;
+}
+
+.overlay-container {
+    position: absolute;
+    width: 90%;
+    height: 90%;
+    top: 5%;
+    left: 5%;
+    right: 0;
+    bottom: 0;
+    animation: showOverlay 0.5s ease-out;
+    backdrop-filter: blur(6px);
+}
+
+.game-over-overlay {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.6);
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 40px 0px;
+}
+
+.game-over-overlay-none {
+    display: none;
+}
+
+.game-over-overlay p {
+    font-family: "Open Sans", "Helvetica Neue", Arial, sans-serif;
+    font-size: 60px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.game-over-overlay .play {
+    align-self: center;
+    font-family: "Open Sans", "Helvetica Neue";
+    font-size: 20px;
+    width: 40%;
 }
 
 [data-cell-value="2"], [data-cell-value="4"] {
