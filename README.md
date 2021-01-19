@@ -1,4 +1,7 @@
-<h1 align="center" style="color:#FF0"> 2048<h1>
+<h1 align="center"> 2048 <h1>
+# Play it!
+
+You can play the game on the following link: [2048](https://marcelogui.github.io/2048/)
 
 ## The Game
 
@@ -26,8 +29,10 @@ For now it's working and I will leave as it is so I can work on finishing the re
 
 Some of the stuff that I still need to code are
 
-* Creation of new tiles only when a move is successfully made
-* Create a score
-* Create buttons to start the game
-* Create a game-over overlay
+* Creation of new tiles only when a move is successfully made :heavy_check_mark: 
+* Create a score :heavy_check_mark: 
+* Create buttons to start the game :heavy_check_mark: 
+* Create a game-over overlay :heavy_check_mark: 
 * Create a winning overlay
+* Save best score to local storage
+* Save game state
