@@ -23,17 +23,6 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5Z54LND"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    <script>
-        function conversionEvent() {
-            console.log("Conversion Event Fired")
-            var transactionId = Math.floor(Math.random()*1000);
-            window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push({
-            'event': 'newConversion',
-            'tid': transactionId,
-            });
-        }
-    </script>
     <div class="container">
 
         <header>
@@ -53,7 +42,7 @@
                         <p id="best-score">0</p>
                     </div>
                 </div>
-                <a class="play" onClick="conversionEvent()">
+                <a class="play">
                     New Game
                 </a>
             </div>
